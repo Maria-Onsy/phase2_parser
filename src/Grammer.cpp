@@ -76,6 +76,7 @@ Grammer::get_from_file()
                      rname+=input[i];
                      i++;
                    }
+                   if(rname == "\\L"){term = true;}
 
                    if(term&& !termContain(rname)){
                     terminals.push_back(rname);

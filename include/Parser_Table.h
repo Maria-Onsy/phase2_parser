@@ -12,14 +12,15 @@ class Parser_Table
         list<list<int>> table;
         bool nonLL1;
         string error_messege;
-        Parser_Table(Grammer g);
+        Parser_Table(Grammer* g);
 
     protected:
 
     private:
-        get_frist();
+        get_frist(Non_terminal* nonterm);
         get_follow();
         construct_table();
+        bool contain(list<int> lt,int id);
 };
 
 #endif // PARSER_TABLE_H

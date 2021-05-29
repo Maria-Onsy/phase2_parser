@@ -10,7 +10,7 @@ int main()
     Grammer g = Grammer("grammer.txt");
     g.get_from_file();
 
-    /*
+/*
     list<Non_terminal>::iterator it;
     for(it=g.non_terminals.begin();it!=g.non_terminals.end();it++){
         cout<<"Rule:\n";
@@ -32,14 +32,41 @@ int main()
             cout<<"\n";
         }
     }
-    */
+*/
 
-  Parser_Table table = Parser_Table(g);
+/*int k=0;
+list<string>::iterator ir;
+for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
+    cout<<k;
+    cout<<"  ";
+    cout<<(*ir);
+    cout<<"\n";
+    k++;
+}*/
+
+
+  Parser_Table table = Parser_Table(&g);
   if(table.nonLL1){
     cerr<<table.error_messege;
     cout<<"\n";
     return 0;
   }
+
+/*list<Non_terminal>::iterator it;
+for(it=g.non_terminals.begin();it!=g.non_terminals.end();it++){
+    cout<<"Non terminal:\n";
+    cout<<(*it).name;
+    cout<<"\n";
+    cout<< "first:";
+    cout<<"\n";
+    list<int>::iterator f;
+    for(f=(*it).first.begin();f!=(*it).first.end();f++){
+        cout<<(*f);
+        cout<<"     ";
+    }
+    cout<<"\n";
+}*/
+
 
 Parser p = Parser(table.table);
 p.path = "input.txt";

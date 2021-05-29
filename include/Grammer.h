@@ -19,6 +19,7 @@ class Grammer
           file_name = file;
           numNonterm = 0;
           numRule = 0;
+          terminals.push_back("\\L");
         }
 
         get_from_file();
