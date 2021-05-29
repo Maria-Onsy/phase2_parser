@@ -9,7 +9,7 @@ class Parser_Table
 {
     public:
         Grammer* grammer;
-        list<list<string>> table;
+        list<list<int>> table;
         bool nonLL1;
         string error_messege;
         Parser_Table(Grammer g);

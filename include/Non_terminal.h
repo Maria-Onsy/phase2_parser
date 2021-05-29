@@ -13,8 +13,8 @@ class Non_terminal
         string name;
         int id;
         list<rule> to;
-        list<string> first;
-        list<string> follow;
+        list<int> first;
+        list<int> follow;
 
         Non_terminal(int num, string n, list<rule> rules){
            id = num;

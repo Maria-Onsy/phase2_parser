@@ -23,6 +23,7 @@ class Grammer
 
         get_from_file();
         Non_terminal* get_non_terminal(int id);
+        Non_terminal* get_non_terminal(string name);
         rule* get_rule(int id);
 
     private:

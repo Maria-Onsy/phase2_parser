@@ -10,12 +10,12 @@ class Parser
 {
     public:
         string path;
-        list<list<string>> table;
+        list<list<int>> table;
         list<string> output;
         stack<string> st;
         stack<string> input;
 
-        Parser(list<list<string>> t){
+        Parser(list<list<int>> t){
           table = t;
           st.push("$");
           st.push("0");

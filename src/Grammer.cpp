@@ -116,6 +116,15 @@ Non_terminal* Grammer:: get_non_terminal(int id){
   }
 }
 
+Non_terminal* Grammer:: get_non_terminal(string name){
+  list<Non_terminal>::iterator it;
+  for(it=this->non_terminals.begin();it!=this->non_terminals.end();it++){
+    if((*it).name == name){
+        return &(*it);
+    }
+  }
+}
+
  rule* Grammer::get_rule(int id){
    list<rule>::iterator it;
    for(it=this->allRules.begin();it!=this->allRules.end();it++){
