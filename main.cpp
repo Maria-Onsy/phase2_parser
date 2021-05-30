@@ -34,7 +34,7 @@ int main()
     }
 */
 
-/*int k=0;
+int k=0;
 list<string>::iterator ir;
 for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
     cout<<k;
@@ -42,7 +42,7 @@ for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
     cout<<(*ir);
     cout<<"\n";
     k++;
-}*/
+}
 
 
   Parser_Table table = Parser_Table(&g);
@@ -52,20 +52,40 @@ for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
     return 0;
   }
 
-/*list<Non_terminal>::iterator it;
+list<Non_terminal>::iterator it;
 for(it=g.non_terminals.begin();it!=g.non_terminals.end();it++){
     cout<<"Non terminal:\n";
     cout<<(*it).name;
     cout<<"\n";
     cout<< "first:";
     cout<<"\n";
-    list<int>::iterator f;
+    list<pair<int,int>>::iterator f;
     for(f=(*it).first.begin();f!=(*it).first.end();f++){
+        cout<<(*f).first;
+        cout<<" -->rule ";
+        cout<<(*f).second;
+        cout<<"     ";
+    }
+    cout<<"\n";
+}
+
+
+cout<<"\n\n\n\n";
+
+list<Non_terminal>::iterator it2;
+for(it2=g.non_terminals.begin();it2!=g.non_terminals.end();it2++){
+    cout<<"Non terminal:\n";
+    cout<<(*it2).name;
+    cout<<"\n";
+    cout<< "follow:";
+    cout<<"\n";
+    list<int>::iterator f;
+    for(f=(*it2).follow.begin();f!=(*it2).follow.end();f++){
         cout<<(*f);
         cout<<"     ";
     }
     cout<<"\n";
-}*/
+}
 
 
 Parser p = Parser(table.table);

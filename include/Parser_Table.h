@@ -18,9 +18,9 @@ class Parser_Table
 
     private:
         get_frist(Non_terminal* nonterm);
-        get_follow();
+        get_follow(Non_terminal* nonterm);
         construct_table();
-        bool contain(list<int> lt,int id);
+        bool contain(list<pair<int,int>> lt,int id);
 };
 
 #endif // PARSER_TABLE_H
