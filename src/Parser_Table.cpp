@@ -14,7 +14,6 @@ Parser_Table::Parser_Table(Grammer* g){
     }
   }
   for(it=this->grammer->non_terminals.begin();it!=this->grammer->non_terminals.end();it++){
-        cout << "Non Terminal: " << it->name << endl;
     if((*it).follow.empty()){
     get_follow(&(*it));
     }
