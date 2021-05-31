@@ -34,6 +34,7 @@ int main()
     }
 */
 
+/*
 int k=0;
 list<string>::iterator ir;
 for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
@@ -43,6 +44,7 @@ for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
     cout<<"\n";
     k++;
 }
+*/
 
 
   Parser_Table table = Parser_Table(&g);
@@ -52,6 +54,7 @@ for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
     return 0;
   }
 
+  /*
 list<Non_terminal>::iterator it;
 for(it=g.non_terminals.begin();it!=g.non_terminals.end();it++){
     cout<<"Non terminal:\n";
@@ -68,10 +71,11 @@ for(it=g.non_terminals.begin();it!=g.non_terminals.end();it++){
     }
     cout<<"\n";
 }
+*/
 
+//cout<<"\n\n\n\n";
 
-cout<<"\n\n\n\n";
-
+/*
 list<Non_terminal>::iterator it2;
 for(it2=g.non_terminals.begin();it2!=g.non_terminals.end();it2++){
     cout<<"Non terminal:\n";
@@ -86,7 +90,7 @@ for(it2=g.non_terminals.begin();it2!=g.non_terminals.end();it2++){
     }
     cout<<"\n";
 }
-
+*/
 
 Parser p = Parser(table.table);
 p.path = "input.txt";

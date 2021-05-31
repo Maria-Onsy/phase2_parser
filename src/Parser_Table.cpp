@@ -39,7 +39,7 @@ Parser_Table::get_frist(Non_terminal* nonterm){
                 list<pair<int,int>>::iterator it;
                 for(it=nont2->first.begin();it!=nont2->first.end();it++){
                     if(!contain(nonterm->first,(*it).first)){
-                       nonterm->first.push_back((*it));
+                       nonterm->first.push_back(pair<int,int>((*it).first,(*itr).id));
                     }
                 }
             }
