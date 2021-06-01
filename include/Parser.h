@@ -31,7 +31,7 @@ class Parser
         };
 
         parse();
-        error_recovery();
+        //error_recovery();
 
         //without linking to lexical
         add_input();
