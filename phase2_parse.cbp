@@ -35,17 +35,29 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Grammer.h" />
+		<Unit filename="include/Link.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Non_terminal.h" />
 		<Unit filename="include/Parser.h" />
 		<Unit filename="include/Parser_Table.h" />
 		<Unit filename="include/rule.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/DFA.cpp" />
+		<Unit filename="src/DFA_state.cpp" />
+		<Unit filename="src/Exp_Node.cpp" />
+		<Unit filename="src/Final_NDFA.cpp" />
 		<Unit filename="src/Grammer.cpp" />
+		<Unit filename="src/Link.cpp" />
+		<Unit filename="src/Minimization.cpp" />
+		<Unit filename="src/NDFA.cpp" />
+		<Unit filename="src/NDFA_state.cpp" />
 		<Unit filename="src/Node.cpp" />
 		<Unit filename="src/Non_terminal.cpp" />
 		<Unit filename="src/Parser.cpp" />
 		<Unit filename="src/Parser_Table.cpp" />
+		<Unit filename="src/Rules.cpp" />
+		<Unit filename="src/Tokens.cpp" />
+		<Unit filename="src/check.cpp" />
 		<Unit filename="src/rule.cpp" />
 		<Extensions>
 			<code_completion />

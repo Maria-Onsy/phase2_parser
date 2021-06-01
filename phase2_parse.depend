@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1622567358 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\main.cpp
+1622590714 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\main.cpp
 	<iostream>
 	"Grammer.h"
 	"Parser_Table.h"
@@ -56,12 +56,232 @@
 	<algorithm>
 	<string.h>
 
-1622574262 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser.cpp
+1622590670 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser.cpp
 	"Parser.h"
+	<iostream>
+	<fstream>
 
-1622571872 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser.h
+1622590670 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser.h
 	<string>
 	<list>
 	<stack>
 	"Grammer.h"
+	"Link.h"
+
+1622590297 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\link.cpp
+	"Link.h"
+	<iostream>
+
+1622583561 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\link.h
+	"Exp_Node.h"
+	"Rules.h"
+	"Final_NDFA.h"
+	"DFA.h"
+	"Tokens.h"
+	"Minimization.h"
+	"check.h"
+
+1620210613 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\exp_node.h
+	<string>
+	<list>
+
+1620478580 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\rules.h
+	"Exp_Node.h"
+	<string>
+	<list>
+
+1620210928 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\final_ndfa.h
+	"Exp_Node.h"
+	"NDFA_state.h"
+	<list>
+
+1620472277 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\ndfa_state.h
+	<list>
+	<string>
+
+1620569934 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\dfa.h
+	"Final_NDFA.h"
+	"DFA_state.h"
+	"NDFA_state.h"
+	"Rules.h"
+	<list>
+
+1620569617 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\dfa_state.h
+	<list>
+	<string>
+	"NDFA_state.h"
+
+1620569263 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\tokens.h
+	"DFA.h"
+	<string>
+	<list>
+
+1620569474 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\minimization.h
+	"DFA.h"
+	<list>
+
+1622476008 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase1_lexical\include\check.h
+	"Tokens.h"
+	"DFA.h"
+	<string>
+	<list>
+
+1620210613 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\exp_node.h
+	<string>
+	<list>
+
+1622581221 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\rules.h
+	"phase1_lexical\include\Exp_Node.h"
+	<string>
+	<list>
+
+1622581259 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\final_ndfa.h
+	"phase1_lexical\include\Exp_Node.h"
+	"phase1_lexical\include\NDFA_state.h"
+	<list>
+
+1620472277 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\ndfa_state.h
+	<list>
+	<string>
+
+1622581188 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\dfa.h
+	"phase1_lexical\include\Final_NDFA.h"
+	"phase1_lexical\include\DFA_state.h"
+	"phase1_lexical\include\NDFA_state.h"
+	"phase1_lexical\include\Rules.h"
+	<list>
+
+1622581259 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\dfa_state.h
+	<list>
+	<string>
+	"phase1_lexical\include\NDFA_state.h"
+
+1622581221 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\tokens.h
+	"phase1_lexical\include\DFA.h"
+	<string>
+	<list>
+
+1622581259 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\minimization.h
+	"phase1_lexical\include\DFA.h"
+	<list>
+
+1622581287 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\check.h
+	"phase1_lexical\include\Tokens.h"
+	"phase1_lexical\include\DFA_state.h"
+	<string>
+	<list>
+
+1620569384 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\src\rules.cpp
+	"Rules.h"
+	<iostream>
+	<fstream>
+
+1622581651 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\dfa_state.cpp
+	"DFA_state.h"
+
+1622581651 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\rules.cpp
+	"Rules.h"
+	<iostream>
+	<fstream>
+
+1622581652 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\exp_node.cpp
+	"Exp_Node.h"
+
+1622581651 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\minimization.cpp
+	"Minimization.h"
+	<iostream>
+	<fstream>
+
+1622581652 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\ndfa_state.cpp
+	"NDFA_state.h"
+
+1622590381 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\tokens.cpp
+	"Tokens.h"
+	<iostream>
+	<fstream>
+
+1622581651 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\dfa.cpp
+	"DFA.h"
+	<iostream>
+	<queue>
+	"NDFA_state.h"
+
+1622581652 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\final_ndfa.cpp
+	"Final_NDFA.h"
+	<iostream>
+	"NDFA.h"
+	"Exp_Node.h"
+
+1622581259 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\phase1_lexical\include\ndfa.h
+	"phase1_lexical\include\Final_NDFA.h"
+	"phase1_lexical\include\NDFA_state.h"
+	"phase1_lexical\include\Exp_Node.h"
+	<string>
+	<list>
+
+1622581652 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\ndfa.cpp
+	"NDFA.h"
+	<iostream>
+	"NDFA_state.h"
+	<string>
+	<list>
+
+1622590233 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\check.cpp
+	"check.h"
+	"Tokens.h"
+	"DFA_state.h"
+	<string.h>
+	<list>
+	<iostream>
+
+1620210613 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\exp_node.h
+	<string>
+	<list>
+
+1620478580 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\rules.h
+	"Exp_Node.h"
+	<string>
+	<list>
+
+1620210928 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\final_ndfa.h
+	"Exp_Node.h"
+	"NDFA_state.h"
+	<list>
+
+1620472277 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\ndfa_state.h
+	<list>
+	<string>
+
+1620569934 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\dfa.h
+	"Final_NDFA.h"
+	"DFA_state.h"
+	"NDFA_state.h"
+	"Rules.h"
+	<list>
+
+1620569617 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\dfa_state.h
+	<list>
+	<string>
+	"NDFA_state.h"
+
+1620569263 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\tokens.h
+	"DFA.h"
+	<string>
+	<list>
+
+1620569474 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\minimization.h
+	"DFA.h"
+	<list>
+
+1622590224 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\check.h
+	"Tokens.h"
+	<string>
+	<list>
+
+1620305767 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\ndfa.h
+	"Final_NDFA.h"
+	"NDFA_state.h"
+	"Exp_Node.h"
+	<string>
+	<list>
 

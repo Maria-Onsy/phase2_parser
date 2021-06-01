@@ -4,6 +4,7 @@
 #include <list>
 #include <stack>
 #include "Grammer.h"
+#include "Link.h"
 using namespace std;
 
 
@@ -11,6 +12,7 @@ class Parser
 {
     public:
         Grammer* g;
+        Link linker = Link();
         list<list<int>> table;
         list<string> output;
         stack<pair<int,bool>> st;
@@ -31,7 +33,7 @@ class Parser
         };
 
         parse();
-        error_recovery();
+        writeFile();
 
         //without linking to lexical
         add_input();

@@ -132,12 +132,17 @@ Parser p = Parser(table.table,&g);
 p.add_input();
 
 p.parse();
-
+/*
 list<string>::iterator st;
 for(st=p.output.begin();st!=p.output.end();st++){
     cout<<(*st);
     cout<<"\n";
 }
+*/
+
+p.writeFile();
+p.linker.tk.write_to_file();
+
 
     return 0;
 }

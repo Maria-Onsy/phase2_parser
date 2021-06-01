@@ -1,4 +1,8 @@
 #include "Parser.h"
+#include <iostream>
+#include <fstream>
+using std::fstream;
+using std::cerr;
 
 Parser::parse(){
 
@@ -9,16 +13,23 @@ Parser::parse(){
                 return 0;
             }
             else{
-                error_recovery();
-                parse();
+                output.push_back("Error : Failed to match");
+                return 0;
             }
         }
         getNext = false;
    }
 
    if(st.empty()){
-        error_recovery();
-        parse();
+         bool t = get_next_token();
+         if(!t){return 0;}
+
+         while(get_next_token()){
+            string t = "Error : discard ";
+             t += g->get_terminal(input);
+             output.push_back(t);
+         }
+         return 0;
    }
 
    //output
@@ -38,7 +49,6 @@ Parser::parse(){
    }
    output.push_back(ot);
 
-
    if(st.top().second){
        if(st.top().first == input){
          // add to output list
@@ -56,7 +66,11 @@ Parser::parse(){
        }
        else if(st.top().first == 0){st.pop();}
        else{
-        error_recovery();
+         string t = "Error : Missing ";
+         t += g->get_terminal(st.top().first);
+         t += " , inserted";
+         output.push_back(t);
+         st.pop();
        }
    }
    else{
@@ -65,8 +79,19 @@ Parser::parse(){
       list<int>::iterator in = (*out).begin();
       if(input == -1){advance(in,g->terminals.size());}
       else{advance(in,input);}
-      if((*in)== -2 || (*in)==-3){ //error or sync
-        error_recovery();
+      if((*in) == -2){  // sync
+            string t ="Error : pop (";
+            t += g->get_non_terminal(st.top().first)->name;
+            output.push_back(t);
+            st.pop();
+      }
+      else if ((*in) == -3){   // empty
+        string t = "Error : illegal(";
+         t += g->get_non_terminal(st.top().first)->name;
+         t += " ) - discard ";
+         t += g->get_terminal(input);
+         output.push_back(t);
+        getNext = true;
       }
       else{
          rule* r = g->get_rule((*in));
@@ -110,10 +135,18 @@ Parser::parse(){
 
 bool Parser::get_next_token(){
 
+    /*
     //without linking to lexical
     if(file.empty()){return false;}
     string temp = file.front();
     file.pop_front();
+    */
+
+    //with linking to lexical
+
+    string temp =linker.get_next_token();
+    if(temp == ""){return false;}
+
 
     //convert string to id
     if(temp == "$"){input = -1;}
@@ -124,8 +157,19 @@ bool Parser::get_next_token(){
 
 }
 
-Parser::error_recovery(){
-
+Parser::writeFile(){
+  fstream file;
+  string text;
+  file.open("Parser Output.txt",ios::out);
+  if(!file){
+        cerr << "Error: file could not be created" << endl;
+        exit(1);
+    }
+  list<string>::iterator it;
+  for(it=output.begin();it!=output.end();it++){
+    file<< *it<<endl;
+  }
+  file.close();
 }
 
 //To test without linking to lexical
