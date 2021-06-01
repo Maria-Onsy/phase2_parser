@@ -9,7 +9,11 @@ Parser::parse(){
                 return 0;
             }
             else{
-                error_recovery();
+                //error_recovery();   // don't need error recovery
+                printf("Error : Failed to match \n");
+                while(!st.empty()){
+                    st.pop();
+                }
                 parse();
             }
         }
@@ -17,13 +21,15 @@ Parser::parse(){
    }
 
    if(st.empty()){
-        error_recovery();
-        parse();
+        //error_recovery();
+        //parse();
+        printf("Error : Failed to match \n");
+        return 0;
    }
 
    //output
    string ot ="";
-   stack <pair<int,bool>>temp = st;
+   stack <pair<int,bool>>temp = st;  // pair <id , is terminal>
    int y = st.size()-1;
    for(int i=0;i<y;i++){
     if(temp.top().second){
@@ -54,9 +60,11 @@ Parser::parse(){
          st.pop();
          getNext = true;
        }
-       else if(st.top().first == 0){st.pop();}
+       else if(st.top().first == 0){st.pop();}  // if epsilon , pop
        else{
-        error_recovery();
+       // error_recovery();     //pop the stack
+       printf("Error : Mismatch \n");
+       st.pop();
        }
    }
    else{
@@ -65,8 +73,17 @@ Parser::parse(){
       list<int>::iterator in = (*out).begin();
       if(input == -1){advance(in,g->terminals.size());}
       else{advance(in,input);}
-      if((*in)== -2 || (*in)==-3){ //error or sync
-        error_recovery();
+      //if((*in)== -2 || (*in)==-3){ //error or sync
+        //error_recovery();
+      //}
+
+      if((*in) == -2){  // sync
+        printf("Error : Mismatch \n");
+        st.pop();
+      }
+      else if ((*in) == -3){   // empty
+        printf("Error : Mismatch \n");
+        getNext = true;
       }
       else{
          rule* r = g->get_rule((*in));
@@ -124,9 +141,9 @@ bool Parser::get_next_token(){
 
 }
 
-Parser::error_recovery(){
+//Parser::error_recovery(){
 
-}
+//}
 
 //To test without linking to lexical
 Parser::add_input(){
