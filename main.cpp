@@ -48,11 +48,7 @@ for(ir=g.terminals.begin();ir!=g.terminals.end();ir++){
 
 
   Parser_Table table = Parser_Table(&g);
-  if(table.nonLL1){
-    cerr<<table.error_messege;
-    cout<<"\n";
-    return 0;
-  }
+
 
   /*
 list<Non_terminal>::iterator it;
@@ -92,7 +88,56 @@ for(it2=g.non_terminals.begin();it2!=g.non_terminals.end();it2++){
 }
 */
 
-Parser p = Parser(table.table);
-p.path = "input.txt";
+/*
+list<list<int>>::iterator itt;
+list<int>::iterator itt2;
+int ito = 0;
+for(itt=table.table.begin();itt!=table.table.end();itt++){
+    cout<<"Nonterminal:     ";
+    cout<<g.get_non_terminal(ito)->name;
+    cout<<"\n";
+    int jtn = 0;
+    for(itt2=(*itt).begin();itt2!=(*itt).end();itt2++){
+    if(jtn==g.terminals.size()){cout<<"$";}
+    else{cout<<g.get_terminal(jtn);}
+    cout<<" --> ";
+    if((*itt2)== -3){cout<<"error";}
+    else if((*itt2)== -2){cout<<"sync";}
+    else{
+       string temp="";
+       rule* r = g.get_rule(*itt2);
+       list<Node>::iterator itt3;
+            for(itt3=r->to.begin();itt3!=r->to.end();itt3++){
+                if((*itt3).terminal){
+                    temp+= "\'";
+                    temp+= (*itt3).name;
+                    temp+= "\'";
+                }
+                else{temp+= (*itt3).name;}
+                temp+= " ";
+            }
+       cout<<temp;
+    }
+    cout<<"\n";
+    jtn++;
+}
+cout<<"-------------------------------------------------\n";
+ito++;
+}
+*/
+
+Parser p = Parser(table.table,&g);
+
+//to test without linking to lexical
+p.add_input();
+
+p.parse();
+
+list<string>::iterator st;
+for(st=p.output.begin();st!=p.output.end();st++){
+    cout<<(*st);
+    cout<<"\n";
+}
+
     return 0;
 }

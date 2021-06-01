@@ -5,7 +5,6 @@
 
 Parser_Table::Parser_Table(Grammer* g){
   grammer = g;
-  nonLL1 = false;
 
   list<Non_terminal>::iterator it;
   for(it=this->grammer->non_terminals.begin();it!=this->grammer->non_terminals.end();it++){
@@ -105,12 +104,13 @@ Parser_Table::construct_table(){
     for(i=grammer->non_terminals.begin(); i!=grammer->non_terminals.end(); i++){
         list<pair<int,int>>:: iterator j;
         bool contepsilon = false;
+        int epsilonrule;
         list<int> l;
         list<int>:: iterator k;
         int q=0; int r;
         for(k=l.begin(); q<grammer->terminals.size()+1; k++){q++; l.push_back(-3);}
         for(j=i->first.begin(); j!=i->first.end(); j++){
-            if((*j).first == 0){contepsilon=true;}
+            if((*j).first == 0){contepsilon=true; epsilonrule = (*j).second;}
             else{
                 k=l.begin();
                 advance(k, (*j).first);
@@ -124,7 +124,7 @@ Parser_Table::construct_table(){
                 k=l.begin();
                 if((*m)==-1){(*m)=grammer->terminals.size();}
                 advance(k, (*m));
-                if((*k)==-3){k=l.erase(k); l.insert(k, -1);}
+                if((*k)==-3){k=l.erase(k); l.insert(k, epsilonrule);}
                 else{cout << "ERROR: This grammer is ambigous" <<endl; return 0;}
             }
         }

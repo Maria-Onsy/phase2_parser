@@ -10,11 +10,8 @@ class Parser_Table
     public:
         Grammer* grammer;
         list<list<int>> table;
-        bool nonLL1;
-        string error_messege;
         Parser_Table(Grammer* g);
 
-    protected:
 
     private:
         get_frist(Non_terminal* nonterm);

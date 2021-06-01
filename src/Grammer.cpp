@@ -146,6 +146,17 @@ Non_terminal* Grammer:: get_non_terminal(string name){
   }
 }
 
+string Grammer::get_terminal(int id){
+  list<string>::iterator it;
+  int i=0;
+  for(it=this->terminals.begin();it!=this->terminals.end();it++){
+    if(i == id){
+        return (*it);
+    }
+    i++;
+  }
+}
+
  bool Grammer::termContain(string name){
      bool found = false;
      list<string>::iterator it;

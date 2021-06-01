@@ -27,6 +27,7 @@ class Grammer
         Non_terminal* get_non_terminal(string name);
         rule* get_rule(int id);
         int get_terminal_id(string name);
+        string get_terminal(int id);
 
     private:
         bool termContain(string name);
