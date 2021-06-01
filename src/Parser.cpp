@@ -34,7 +34,7 @@ Parser::parse(){
 
    //output
    string ot ="";
-   stack <pair<int,bool>>temp = st;
+   stack <pair<int,bool>>temp = st;  // pair <id , is terminal>
    int y = st.size()-1;
    for(int i=0;i<y;i++){
     if(temp.top().second){
@@ -64,7 +64,7 @@ Parser::parse(){
          st.pop();
          getNext = true;
        }
-       else if(st.top().first == 0){st.pop();}
+       else if(st.top().first == 0){st.pop();}  // if epsilon , pop
        else{
          string t = "Error : Missing ";
          t += g->get_terminal(st.top().first);
@@ -91,6 +91,7 @@ Parser::parse(){
          t += " ) - discard ";
          t += g->get_terminal(input);
          output.push_back(t);
+
         getNext = true;
       }
       else{
@@ -157,6 +158,7 @@ bool Parser::get_next_token(){
 
 }
 
+
 Parser::writeFile(){
   fstream file;
   string text;
@@ -171,6 +173,7 @@ Parser::writeFile(){
   }
   file.close();
 }
+
 
 //To test without linking to lexical
 Parser::add_input(){
