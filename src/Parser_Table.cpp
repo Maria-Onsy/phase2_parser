@@ -101,6 +101,48 @@ Parser_Table::get_follow(Non_terminal* nonterminal){
 
 Parser_Table::construct_table(){
 
+    list<Non_terminal>:: iterator i;
+    for(i=grammer->non_terminals.begin(); i!=grammer->non_terminals.end(); i++){
+        list<pair<int,int>>:: iterator j;
+        bool contepsilon = false;
+        list<int> l;
+        list<int>:: iterator k;
+        int q=0; int r;
+        for(k=l.begin(); q<grammer->terminals.size()+1; k++){q++; l.push_back(-3);}
+        for(j=i->first.begin(); j!=i->first.end(); j++){
+            if((*j).first == 0){contepsilon=true;}
+            else{
+                k=l.begin();
+                advance(k, (*j).first);
+                if((*k)==-3){k=l.erase(k); l.insert(k, (*j).second);}
+                else{cout << "ERROR: This grammer is ambigous" <<endl; return 0;}
+            }
+        }
+        if(contepsilon){
+            list<int>:: iterator m;
+            for(m=i->follow.begin(); m!=i->follow.end(); m++){
+                k=l.begin();
+                if((*m)==-1){(*m)=grammer->terminals.size();}
+                advance(k, (*m));
+                if((*k)==-3){k=l.erase(k); l.insert(k, -1);}
+                else{cout << "ERROR: This grammer is ambigous" <<endl; return 0;}
+            }
+        }
+        else{
+            list<int>:: iterator m;
+            for(m=i->follow.begin(); m!=i->follow.end(); m++){
+                k=l.begin();
+                if((*m)==-1){(*m)=grammer->terminals.size();}
+                advance(k, (*m));
+                if((*k)==-3){k=l.erase(k); l.insert(k, -2);}
+            }
+        }
+
+        list<list<int>>:: iterator tit = table.begin();
+        advance(tit,(*i).id);
+        table.push_back(l);
+    }
+
 }
 
 bool Parser_Table::contain(list<pair<int,int>> lt,int id){
