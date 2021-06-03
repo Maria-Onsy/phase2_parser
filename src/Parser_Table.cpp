@@ -24,9 +24,7 @@ Parser_Table::Parser_Table(Grammar* g){
 
   construct_table();
 
-  if(!notLL1){
-    write_table();
-  }
+  write_table();
 
 }
 
@@ -178,6 +176,13 @@ Parser_Table::write_table(){
         cerr << "Error: file could not be created" << endl;
         exit(1);
     }
+
+    if(notLL1){
+        file << error_message<<endl;
+        file.close();
+        return 0;
+    }
+
     list<list<int>>::iterator itt;
     list<int>::iterator itt2;
     int ito = 0;
@@ -194,10 +199,10 @@ Parser_Table::write_table(){
             else{
                 string temp="";
                 rule* r = grammar->get_rule(*itt2);
+                file<<grammar->get_non_terminal(ito)->name;
+                file<< " = ";
                 list<Node>::iterator itt3;
                 for(itt3=r->to.begin();itt3!=r->to.end();itt3++){
-                    file<<grammar->get_non_terminal(ito)->name;
-                    file<< " = ";
                     if((*itt3).terminal){
                         temp+= "\'" + (*itt3).name + "\'";
                 }
@@ -205,13 +210,15 @@ Parser_Table::write_table(){
                 temp+= " ";
             }
            file<<temp;
+            }
+        file<<"\n";
+        jtn++;
+        }
+        file<<"--------------------------------------------------------------\n";
+        ito++;
     }
-    file<<"\n";
-    jtn++;
-}
-file<<"--------------------------------------------------------------\n";
-ito++;
-}
+
+    file.close();
 }
 
 bool Parser_Table::contain(list<pair<int,int>> lt,int id){
