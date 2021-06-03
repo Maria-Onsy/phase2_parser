@@ -67,14 +67,15 @@ for(it = l.begin(); it!=l.end(); it++){
 token.write_to_file();
 }
 
+
 check::copy_to(Tokens token){
   list<string>:: iterator it;
   for(it = token.input.begin(); it!=token.input.end(); it++){
      in += (*it);
      in += " ";
    }
-  // state = df.get_state(df.start);
 }
+
 
 string check::get_next_token(DFA df){
 
@@ -85,10 +86,9 @@ string check::get_next_token(DFA df){
     int stop = 0;                //to keep track of index of last accepted token
     DFA_state* state = df.get_state(df.start);
 
-    if(num == in.length()-1){
-            return "$";}
-    else if(num>in.length()-1){
-            return "";}
+    if(num == in.length()-1){return "$";} //the end of the input
+
+    else if(num>in.length()-1){return "";} //the input is empty
 
     for(int i=num;i<in.length();i++){
         if(in[i]==' '){continue;}

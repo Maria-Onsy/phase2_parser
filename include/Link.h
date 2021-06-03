@@ -17,14 +17,11 @@ class Link
         DFA dfa;
         Minimization mini;
         Tokens tk;
-
         check lexical;
+
         Link();
+
         string get_next_token();
-
-    protected:
-
-    private:
 };
 
 #endif // LINK_H

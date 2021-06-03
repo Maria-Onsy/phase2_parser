@@ -3,7 +3,7 @@
 #include <string>
 #include <list>
 #include <stack>
-#include "Grammer.h"
+#include "Grammar.h"
 #include "Link.h"
 using namespace std;
 
@@ -11,32 +11,24 @@ using namespace std;
 class Parser
 {
     public:
-        Grammer* g;
+        Grammar* g;
         Link linker = Link();
         list<list<int>> table;
         list<string> output;
         stack<pair<int,bool>> st;
-      //  stack<int> outIndx;
         int input;
         bool getNext = true;
 
-        //without linking to lexical
-        list<string> file;
-
-        Parser(list<list<int>> t,Grammer* gr ){
+        Parser(list<list<int>> t,Grammar* gr ){
           table = t;
           g = gr;
           st.push(pair<int,bool>(-1,true));
           st.push(pair<int,bool>(0,false));
-        //  outIndx.push(0);
-
-        };
+        }
 
         parse();
         writeFile();
 
-        //without linking to lexical
-        add_input();
 
 
     private:

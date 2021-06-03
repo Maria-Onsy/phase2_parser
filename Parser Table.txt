@@ -1,0 +1,374 @@
+Nonterminal:     METHOD_BODY
+\L -->  error
+id -->  METHOD_BODY = STATEMENT_LIST 
+; -->  error
+int -->  METHOD_BODY = STATEMENT_LIST 
+float -->  METHOD_BODY = STATEMENT_LIST 
+if -->  METHOD_BODY = STATEMENT_LIST 
+( -->  error
+) -->  error
+{ -->  error
+} -->  error
+else -->  error
+while -->  METHOD_BODY = STATEMENT_LIST 
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     STATEMENT_LIST
+\L -->  error
+id -->  STATEMENT_LIST = STATEMENT_LIST = STATEMENT STATEMENT_LIST1 
+; -->  error
+int -->  STATEMENT_LIST = STATEMENT_LIST = STATEMENT STATEMENT_LIST1 
+float -->  STATEMENT_LIST = STATEMENT_LIST = STATEMENT STATEMENT_LIST1 
+if -->  STATEMENT_LIST = STATEMENT_LIST = STATEMENT STATEMENT_LIST1 
+( -->  error
+) -->  error
+{ -->  error
+} -->  error
+else -->  error
+while -->  STATEMENT_LIST = STATEMENT_LIST = STATEMENT STATEMENT_LIST1 
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     STATEMENT_LIST1
+\L -->  error
+id -->  STATEMENT_LIST1 = STATEMENT_LIST1 = STATEMENT STATEMENT_LIST1 
+; -->  error
+int -->  STATEMENT_LIST1 = STATEMENT_LIST1 = STATEMENT STATEMENT_LIST1 
+float -->  STATEMENT_LIST1 = STATEMENT_LIST1 = STATEMENT STATEMENT_LIST1 
+if -->  STATEMENT_LIST1 = STATEMENT_LIST1 = STATEMENT STATEMENT_LIST1 
+( -->  error
+) -->  error
+{ -->  error
+} -->  error
+else -->  error
+while -->  STATEMENT_LIST1 = STATEMENT_LIST1 = STATEMENT STATEMENT_LIST1 
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  STATEMENT_LIST1 = '\L' 
+--------------------------------------------------------------
+Nonterminal:     STATEMENT
+\L -->  error
+id -->  STATEMENT = ASSIGNMENT 
+; -->  error
+int -->  STATEMENT = DECLARATION 
+float -->  STATEMENT = DECLARATION 
+if -->  STATEMENT = IF 
+( -->  error
+) -->  error
+{ -->  error
+} -->  sync
+else -->  error
+while -->  STATEMENT = WHILE 
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     DECLARATION
+\L -->  error
+id -->  sync
+; -->  error
+int -->  DECLARATION = DECLARATION = DECLARATION = PRIMITIVE_TYPE 'id' ';' 
+float -->  DECLARATION = DECLARATION = DECLARATION = PRIMITIVE_TYPE 'id' ';' 
+if -->  sync
+( -->  error
+) -->  error
+{ -->  error
+} -->  sync
+else -->  error
+while -->  sync
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     PRIMITIVE_TYPE
+\L -->  error
+id -->  sync
+; -->  error
+int -->  PRIMITIVE_TYPE = 'int' 
+float -->  PRIMITIVE_TYPE = 'float' 
+if -->  error
+( -->  error
+) -->  error
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     IF
+\L -->  error
+id -->  sync
+; -->  error
+int -->  sync
+float -->  sync
+if -->  IF = IF = IF = IF = IF = IF = IF = IF = IF = IF = IF = 'if' '(' EXPRESSION ')' '{' STATEMENT '}' 'else' '{' STATEMENT '}' 
+( -->  error
+) -->  error
+{ -->  error
+} -->  sync
+else -->  error
+while -->  sync
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     WHILE
+\L -->  error
+id -->  sync
+; -->  error
+int -->  sync
+float -->  sync
+if -->  sync
+( -->  error
+) -->  error
+{ -->  error
+} -->  sync
+else -->  error
+while -->  WHILE = WHILE = WHILE = WHILE = WHILE = WHILE = WHILE = 'while' '(' EXPRESSION ')' '{' STATEMENT '}' 
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     ASSIGNMENT
+\L -->  error
+id -->  ASSIGNMENT = ASSIGNMENT = ASSIGNMENT = ASSIGNMENT = 'id' '=' EXPRESSION ';' 
+; -->  error
+int -->  sync
+float -->  sync
+if -->  sync
+( -->  error
+) -->  error
+{ -->  error
+} -->  sync
+else -->  error
+while -->  sync
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  sync
+--------------------------------------------------------------
+Nonterminal:     EXPRESSION
+\L -->  error
+id -->  EXPRESSION = EXPRESSION = SIMPLE_EXPRESSION EXPRESSION1 
+; -->  sync
+int -->  error
+float -->  error
+if -->  error
+( -->  EXPRESSION = EXPRESSION = SIMPLE_EXPRESSION EXPRESSION1 
+) -->  sync
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  EXPRESSION = EXPRESSION = SIMPLE_EXPRESSION EXPRESSION1 
++ -->  EXPRESSION = EXPRESSION = SIMPLE_EXPRESSION EXPRESSION1 
+- -->  EXPRESSION = EXPRESSION = SIMPLE_EXPRESSION EXPRESSION1 
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     EXPRESSION1
+\L -->  error
+id -->  error
+; -->  EXPRESSION1 = '\L' 
+int -->  error
+float -->  error
+if -->  error
+( -->  error
+) -->  EXPRESSION1 = '\L' 
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  EXPRESSION1 = EXPRESSION1 = 'relop' SIMPLE_EXPRESSION 
+addop -->  error
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     SIMPLE_EXPRESSION
+\L -->  error
+id -->  SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = TERM SIMPLE_EXPRESSION1 
+; -->  sync
+int -->  error
+float -->  error
+if -->  error
+( -->  SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = TERM SIMPLE_EXPRESSION1 
+) -->  sync
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  sync
+addop -->  error
+mulop -->  error
+num -->  SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = TERM SIMPLE_EXPRESSION1 
++ -->  SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = SIGN TERM SIMPLE_EXPRESSION1 
+- -->  SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = SIMPLE_EXPRESSION = SIGN TERM SIMPLE_EXPRESSION1 
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     SIMPLE_EXPRESSION1
+\L -->  error
+id -->  error
+; -->  SIMPLE_EXPRESSION1 = '\L' 
+int -->  error
+float -->  error
+if -->  error
+( -->  error
+) -->  SIMPLE_EXPRESSION1 = '\L' 
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  SIMPLE_EXPRESSION1 = '\L' 
+addop -->  SIMPLE_EXPRESSION1 = SIMPLE_EXPRESSION1 = SIMPLE_EXPRESSION1 = 'addop' TERM SIMPLE_EXPRESSION1 
+mulop -->  error
+num -->  error
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     TERM
+\L -->  error
+id -->  TERM = TERM = FACTOR TERM1 
+; -->  sync
+int -->  error
+float -->  error
+if -->  error
+( -->  TERM = TERM = FACTOR TERM1 
+) -->  sync
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  sync
+addop -->  sync
+mulop -->  error
+num -->  TERM = TERM = FACTOR TERM1 
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     TERM1
+\L -->  error
+id -->  error
+; -->  TERM1 = '\L' 
+int -->  error
+float -->  error
+if -->  error
+( -->  error
+) -->  TERM1 = '\L' 
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  TERM1 = '\L' 
+addop -->  TERM1 = '\L' 
+mulop -->  TERM1 = TERM1 = TERM1 = 'mulop' FACTOR TERM1 
+num -->  error
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     FACTOR
+\L -->  error
+id -->  FACTOR = 'id' 
+; -->  sync
+int -->  error
+float -->  error
+if -->  error
+( -->  FACTOR = FACTOR = FACTOR = '(' EXPRESSION ')' 
+) -->  sync
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  sync
+addop -->  sync
+mulop -->  sync
+num -->  FACTOR = 'num' 
++ -->  error
+- -->  error
+$ -->  error
+--------------------------------------------------------------
+Nonterminal:     SIGN
+\L -->  error
+id -->  sync
+; -->  error
+int -->  error
+float -->  error
+if -->  error
+( -->  sync
+) -->  error
+{ -->  error
+} -->  error
+else -->  error
+while -->  error
+= -->  error
+relop -->  error
+addop -->  error
+mulop -->  error
+num -->  sync
++ -->  SIGN = '+' 
+- -->  SIGN = '-' 
+$ -->  error
+--------------------------------------------------------------

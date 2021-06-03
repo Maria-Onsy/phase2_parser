@@ -3,20 +3,24 @@
 #include <string>
 #include <list>
 using namespace std;
-#include "Grammer.h";
+#include "Grammar.h";
 
 class Parser_Table
 {
     public:
-        Grammer* grammer;
+        Grammar* grammar;
+        bool notLL1 = false;
+        string error_message;
         list<list<int>> table;
-        Parser_Table(Grammer* g);
+
+        Parser_Table(Grammar* g);
 
 
     private:
         get_frist(Non_terminal* nonterm);
         get_follow(Non_terminal* nonterm);
         construct_table();
+        write_table();
         bool contain(list<pair<int,int>> lt,int id);
 };
 

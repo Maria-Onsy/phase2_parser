@@ -25,6 +25,8 @@ class check
        copy_to(Tokens token);
        string get_next_token(DFA df);
 
+
+
        Check(Tokens token, DFA df);
 
     private:

@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
-1622590714 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\main.cpp
+1622734588 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\main.cpp
 	<iostream>
-	"Grammer.h"
+	"Grammar.h"
 	"Parser_Table.h"
 	"Parser.h"
 
@@ -31,7 +31,7 @@
 	<iostream>
 	<fstream>
 
-1622492431 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\grammer.h
+1622730607 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\grammer.h
 	"Non_terminal.h"
 	<string>
 	<list>
@@ -45,34 +45,35 @@
 1622305969 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\first_follow.h
 	"Grammer.h"
 
-1622558408 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser_table.h
+1622736929 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser_table.h
 	<string>
 	<list>
-	"Grammer.h"
+	"Grammar.h"
 
-1622562596 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser_table.cpp
+1622745077 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser_table.cpp
 	"Parser_Table.h"
 	<iostream>
+	<fstream>
 	<algorithm>
 	<string.h>
 
-1622590670 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser.cpp
+1622745654 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\parser.cpp
 	"Parser.h"
 	<iostream>
 	<fstream>
 
-1622590862 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser.h
+1622731681 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\parser.h
 	<string>
 	<list>
 	<stack>
-	"Grammer.h"
+	"Grammar.h"
 	"Link.h"
 
-1622590297 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\link.cpp
+1622744337 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\link.cpp
 	"Link.h"
 	<iostream>
 
-1622583561 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\link.h
+1622744337 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\link.h
 	"Exp_Node.h"
 	"Rules.h"
 	"Final_NDFA.h"
@@ -187,7 +188,7 @@
 1622581652 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\exp_node.cpp
 	"Exp_Node.h"
 
-1622581651 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\minimization.cpp
+1622736797 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\minimization.cpp
 	"Minimization.h"
 	<iostream>
 	<fstream>
@@ -226,7 +227,7 @@
 	<string>
 	<list>
 
-1622590233 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\check.cpp
+1622745857 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\check.cpp
 	"check.h"
 	"Tokens.h"
 	"DFA_state.h"
@@ -273,7 +274,7 @@
 	"DFA.h"
 	<list>
 
-1622590224 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\check.h
+1622745734 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\check.h
 	"Tokens.h"
 	<string>
 	<list>
@@ -284,4 +285,14 @@
 	"Exp_Node.h"
 	<string>
 	<list>
+
+1622731447 c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\include\grammar.h
+	"Non_terminal.h"
+	<string>
+	<list>
+
+1622744210 source:c:\users\maria onsy\desktop\csed\third year\compiler\project\phase2_parse\src\grammar.cpp
+	"Grammar.h"
+	<iostream>
+	<fstream>
 

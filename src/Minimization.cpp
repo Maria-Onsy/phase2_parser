@@ -365,7 +365,7 @@ Minimization::write_to_file()
 {
   fstream file;
   string text;
-  file.open("Table.txt",ios::out);
+  file.open("Lexical Table.txt",ios::out);
   if(!file){
         cerr << "Error: file could not be created" << endl;
         exit(1);

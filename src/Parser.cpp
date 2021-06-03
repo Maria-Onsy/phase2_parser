@@ -10,7 +10,7 @@ Parser::parse(){
         bool t = get_next_token();
         if (!t){
             if(st.empty()){
-                return 0;
+                return 0;  //both of the stack and the input are empty
             }
             else{
                 output.push_back("Error : Failed to match");
@@ -32,6 +32,7 @@ Parser::parse(){
          return 0;
    }
 
+
    //output
    string ot ="";
    stack <pair<int,bool>>temp = st;  // pair <id , is terminal>
@@ -49,22 +50,20 @@ Parser::parse(){
    }
    output.push_back(ot);
 
+
+   //if the top of the stack is terminal
    if(st.top().second){
+
+        //top of the stack match the input
        if(st.top().first == input){
-         // add to output list
-       /*  int temp = outIndx.top();
-         if(output.size()<=temp){output.push_back(g->get_terminal(st.top().first));}
-         else{
-           list<string>::iterator t = output.begin();
-           advance(t,temp);
-           (*t) += g->get_terminal(st.top().first);
-         }
-         outIndx.pop();
-       */
          st.pop();
          getNext = true;
        }
+
+       //top of stack is epsilon
        else if(st.top().first == 0){st.pop();}  // if epsilon , pop
+
+       //Mismatch
        else{
          string t = "Error : Missing ";
          t += g->get_terminal(st.top().first);
@@ -73,19 +72,26 @@ Parser::parse(){
          st.pop();
        }
    }
+
+
+   //top of the stack is nonterminal
    else{
       list<list<int>> ::iterator out = table.begin();
       advance(out,st.top().first);
       list<int>::iterator in = (*out).begin();
       if(input == -1){advance(in,g->terminals.size());}
       else{advance(in,input);}
-      if((*in) == -2){  // sync
+
+      //sync
+      if((*in) == -2){
             string t ="Error : pop (";
             t += g->get_non_terminal(st.top().first)->name;
             output.push_back(t);
             st.pop();
       }
-      else if ((*in) == -3){   // empty
+
+      // error
+      else if ((*in) == -3){
         string t = "Error : illegal(";
          t += g->get_non_terminal(st.top().first)->name;
          t += " ) - discard ";
@@ -94,19 +100,10 @@ Parser::parse(){
 
         getNext = true;
       }
+
+
       else{
          rule* r = g->get_rule((*in));
-
-         //add to output
-       /* int temp = outIndx.top();
-         if(output.empty()||output.size()<=temp){output.push_back(g->get_non_terminal(st.top().first)->name);}
-         else{
-           list<string>::iterator t = output.begin();
-           advance(t,temp);
-           (*t) += g->get_non_terminal(st.top().first)->name;
-         }
-         outIndx.pop();
-        */
          st.pop();
 
          list<Node>::iterator it;
@@ -114,14 +111,12 @@ Parser::parse(){
          for(it=r->to.begin();it!=r->to.end();it++){
             if((*it).terminal){
                 rev.push(pair<int,bool>(g->get_terminal_id((*it).name),true));
-          //      outIndx.push(temp+1);
-
             }
             else{
                 rev.push(pair<int,bool>((g->get_non_terminal((*it).name))->id,false));
-            //     outIndx.push(temp+1);
             }
          }
+
          int j = rev.size();
          for(int i=0;i<j;i++){
                 st.push(rev.top());
@@ -134,20 +129,11 @@ Parser::parse(){
 
 }
 
+
 bool Parser::get_next_token(){
 
-    /*
-    //without linking to lexical
-    if(file.empty()){return false;}
-    string temp = file.front();
-    file.pop_front();
-    */
-
-    //with linking to lexical
-
     string temp =linker.get_next_token();
-    if(temp == ""){return false;}
-
+    if(temp == ""){return false;}  //the input is empty
 
     //convert string to id
     if(temp == "$"){input = -1;}
@@ -157,6 +143,7 @@ bool Parser::get_next_token(){
     return true;
 
 }
+
 
 
 Parser::writeFile(){
@@ -174,35 +161,3 @@ Parser::writeFile(){
   file.close();
 }
 
-
-//To test without linking to lexical
-Parser::add_input(){
-  file.push_back("int");
-  file.push_back("id");
-  file.push_back(";");
-  file.push_back("id");
-  file.push_back("=");
-  file.push_back("num");
-  file.push_back(";");
-  file.push_back("if");
-  file.push_back("(");
-  file.push_back("id");
-  file.push_back("relop");
-  file.push_back("num");
-  file.push_back(")");
-  file.push_back("{");
-  file.push_back("id");
-  file.push_back("=");
-  file.push_back("num");
-  file.push_back(";");
-  file.push_back("}");
-  file.push_back("else");
-  file.push_back("{");
-  file.push_back("id");
-  file.push_back("=");
-  file.push_back("num");
-  file.push_back(";");
-  file.push_back("}");
-  file.push_back("$");
-
-}

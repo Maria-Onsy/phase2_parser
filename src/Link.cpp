@@ -18,6 +18,7 @@ Link::Link()
 
 }
 
+
 string Link::get_next_token(){
   string temp = lexical.get_next_token(mini.minimal);
   tk.output.push_back(temp);
